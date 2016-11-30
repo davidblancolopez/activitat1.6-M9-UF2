@@ -2,7 +2,7 @@
 package activitat1.pkg6.m9.uf2;
 
 
-public class CompteBancari {
+public class Contenedor {
 
     private int contenido;
     private boolean contenedorLleno = Boolean.FALSE;
