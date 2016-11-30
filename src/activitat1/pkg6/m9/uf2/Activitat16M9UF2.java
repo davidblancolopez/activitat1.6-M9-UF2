@@ -3,7 +3,7 @@ package activitat1.pkg6.m9.uf2;
 
 
 public class Activitat16M9UF2 {
-    private static Contenedor contenedor;
+    private static CompteBancari contenedor;
     private static Thread productor;
     private static Thread[] consumidores;
     private static final int CANTIDADCONSUMIDORES = 5;
@@ -13,7 +13,7 @@ public class Activitat16M9UF2 {
   * consumidor es qui treu diners
   */
     public static void main(String[] args) {
-        contenedor = new Contenedor();
+        contenedor = new CompteBancari();
         productor = new Thread(new Productor(contenedor, 1));
         consumidores = new Thread[CANTIDADCONSUMIDORES];
 
