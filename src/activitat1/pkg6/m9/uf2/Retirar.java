@@ -11,6 +11,7 @@ public class Retirar implements Runnable {
 
     private final CompteBancari contenedor;
     private final Random aleatorio;
+    private final int TIEMPOESPERA = 2500;
 
     /**
      * Constructor de la clase
@@ -31,9 +32,15 @@ public class Retirar implements Runnable {
         while (Boolean.TRUE) {
             
             int quitar = aleatorio.nextInt(1000);
-            int dineroActual = contenedor.retirar(quitar);
-            System.out.println("Retirada: "+ quitar
-                    + "\n SALDO ACTUAL: " + dineroActual);
+
+            System.out.println("Retirada: "+ quitar);
+            
+            contenedor.retirar(quitar);
+            try {
+                Thread.sleep(TIEMPOESPERA);
+            } catch (InterruptedException e) {
+                System.err.println("Error en run -> " + e.getMessage());
+            }
         }
     }
 }

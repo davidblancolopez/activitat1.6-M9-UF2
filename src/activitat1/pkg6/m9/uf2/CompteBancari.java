@@ -2,10 +2,10 @@ package activitat1.pkg6.m9.uf2;
 
 public class CompteBancari {
 
-    private int compte;
+    private int compte = 0;
     private boolean contenedorLleno = Boolean.FALSE;
 
-    public synchronized int retirar(int value) {
+    public synchronized void retirar(int value) {
         
             while (!contenedorLleno) {
                 try {
@@ -14,15 +14,24 @@ public class CompteBancari {
                     System.err.println("Contenedor: Error en retirar -> " + e.getMessage());
                 }
             }
+            
+            if((compte - value) >= 0){
 
-            contenedorLleno = !contenedorLleno;
             compte -= value;
+            
+            System.out.println("Retirada: " + value);
+            System.out.println("SALDO ACTUAL:" + compte);
+            }
+            
+            contenedorLleno = !contenedorLleno;
             notifyAll();
-            return compte;
+            
+            System.err.println("No s'ha pogut realitzar la operació: Retirada: " + value);
+            System.out.println("SALDO ACTUAL:" + compte);
         
     }
 
-    public synchronized int ingresar(int value) {
+    public synchronized void ingresar(int value) {
         while (contenedorLleno) {
             try {
                 wait();
@@ -33,6 +42,8 @@ public class CompteBancari {
         compte += value;
         contenedorLleno = !contenedorLleno;
         notifyAll();
-        return compte;
+        
+        System.out.println("Ingres: " + value);
+        System.out.println("SALDO ACTUAL:" + compte);
     }
 }
