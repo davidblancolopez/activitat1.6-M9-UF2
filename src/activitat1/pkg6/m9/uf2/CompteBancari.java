@@ -2,33 +2,29 @@ package activitat1.pkg6.m9.uf2;
 
 public class CompteBancari {
 
-    private int compte = 0;
+    private int compte = 100;
     private boolean contenedorLleno = Boolean.FALSE;
 
     public synchronized void retirar(int value) {
-        
-            while (!contenedorLleno) {
-                try {
-                    wait();
-                } catch (InterruptedException e) {
-                    System.err.println("Contenedor: Error en retirar -> " + e.getMessage());
-                }
-            }
-            
-            if((compte - value) >= 0){
 
-            compte -= value;
-            
-            System.out.println("Retirada: " + value);
-            System.out.println("SALDO ACTUAL:" + compte);
+        while (!contenedorLleno) {
+            try {
+                wait();
+                contenedorLleno = !contenedorLleno;
+            } catch (InterruptedException e) {
+                System.err.println("Contenedor: Error en retirar -> " + e.getMessage());
             }
-            
-            contenedorLleno = !contenedorLleno;
-            notifyAll();
-            
-            System.err.println("No s'ha pogut realitzar la operació: Retirada: " + value);
-            System.out.println("SALDO ACTUAL:" + compte);
-        
+        }
+
+        if ((compte - value) >= 0) {
+            compte -= value;
+
+            System.out.println("Retirada: " + value + "\nSALDO ACTUAL:" + compte);
+        }
+
+        contenedorLleno = !contenedorLleno;
+        notifyAll();
+
     }
 
     public synchronized void ingresar(int value) {
@@ -42,8 +38,8 @@ public class CompteBancari {
         compte += value;
         contenedorLleno = !contenedorLleno;
         notifyAll();
-        
-        System.out.println("Ingres: " + value);
-        System.out.println("SALDO ACTUAL:" + compte);
+
+        System.out.println("Ingres: " + value + "\nSALDO ACTUAL:" + compte);
+
     }
 }

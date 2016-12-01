@@ -12,7 +12,7 @@ public class Ingres implements Runnable {
 
     private final Random aleatorio;
     private final CompteBancari contenedor;
-    private final int TIEMPOESPERA = 2500;
+    private final int TIEMPOESPERA = 2000;
 
     /**
      * Constructor de la clase
@@ -31,11 +31,10 @@ public class Ingres implements Runnable {
      */
     public void run() {
         while (Boolean.TRUE) {
-            int poner = aleatorio.nextInt(1000);
-
-
+            int poner = aleatorio.nextInt(50);
             
             contenedor.ingresar(poner);
+            
             try {
                 Thread.sleep(TIEMPOESPERA);
             } catch (InterruptedException e) {
