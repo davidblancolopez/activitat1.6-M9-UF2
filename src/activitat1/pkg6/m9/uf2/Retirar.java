@@ -11,7 +11,7 @@ public class Retirar implements Runnable {
 
     private final CompteBancari contenedor;
     private final Random aleatorio;
-    private final int TIEMPOESPERA = 2000;
+    private final int TIEMPOESPERA = 1500;
 
     /**
      * Constructor de la clase

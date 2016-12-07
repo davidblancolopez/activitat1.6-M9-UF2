@@ -12,7 +12,7 @@ public class Ingres implements Runnable {
 
     private final Random aleatorio;
     private final CompteBancari contenedor;
-    private final int TIEMPOESPERA = 2000;
+    private final int TIEMPOESPERA = 1500;
 
     /**
      * Constructor de la clase
