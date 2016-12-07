@@ -31,7 +31,7 @@ public class Ingres implements Runnable {
      */
     public void run() {
         while (Boolean.TRUE) {
-            int poner = aleatorio.nextInt(50);
+            int poner = aleatorio.nextInt(10);
             
             contenedor.ingresar(poner);
             
