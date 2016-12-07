@@ -14,7 +14,7 @@ public class Retirar implements Runnable {
     private final int TIEMPOESPERA = 1500;
 
     /**
-     * Constructor de la clase
+     * Constructor de la clase Retirar.
      *
      * @param contenedor Contenedor común a los consumidores y el productor
      * @param idconsumidor Identificador del consumidor
@@ -26,7 +26,7 @@ public class Retirar implements Runnable {
 
     @Override
     /**
-     * Implementación de la hebra
+     * Implementació de la hebra
      */
     public void run() {
         while (Boolean.TRUE) {

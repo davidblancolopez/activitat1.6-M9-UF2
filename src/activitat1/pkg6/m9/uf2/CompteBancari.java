@@ -5,6 +5,11 @@ public class CompteBancari {
     private int compte = 100;
     private boolean contenedorLleno = Boolean.FALSE;
 
+    /**
+     * Metode que s'encarrega de retirar els diners. Si no es pot accedir 
+     * es quedara en el bucle esperant fins que pugi i llavors realitzara la operació.
+     * @param value 
+     */
     public synchronized void retirar(int value) {
 
         while (contenedorLleno || ((compte - value) < 0) ) {
@@ -30,6 +35,11 @@ public class CompteBancari {
 
     }
 
+    /**
+     * Metode que s'encarrega de realitzar l'ingres de diners. Si no es pot accedir 
+     * es quedara en el bucle esperant fins que pugi i llavors realitzara la operació.
+     * @param value 
+     */
     public synchronized void ingresar(int value) {
         while (contenedorLleno) {
             try {

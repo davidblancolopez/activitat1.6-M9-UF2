@@ -15,7 +15,7 @@ public class Ingres implements Runnable {
     private final int TIEMPOESPERA = 1500;
 
     /**
-     * Constructor de la clase
+     * Constructor de la clase Ingres.
      *
      * @param contenedor Contenedor común a los consumidores y el productor
      * @param idproductor Identificador del productor
@@ -27,7 +27,7 @@ public class Ingres implements Runnable {
 
     @Override
     /**
-     * Implementación de la hebra
+     * Implementació de la hebra
      */
     public void run() {
         while (Boolean.TRUE) {
