@@ -13,7 +13,7 @@ public class Activitat16M9UF2 {
 
 
     /**
-     * MEtode Main que crea els fils de ingresos i retirades.
+     * Metode Main que crea els fils de ingresos i retirades.
      * @param args 
      */
     public static void main(String[] args) {
