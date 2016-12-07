@@ -7,20 +7,22 @@ public class CompteBancari {
 
     public synchronized void retirar(int value) {
 
-        while (!contenedorLleno) {
+        while (!contenedorLleno || ((compte - value) < 0) ) {
             try {
                 wait();
-                contenedorLleno = !contenedorLleno;
+                //contenedorLleno = !contenedorLleno;
             } catch (InterruptedException e) {
                 System.err.println("Contenedor: Error en retirar -> " + e.getMessage());
             }
         }
 
-        if ((compte - value) >= 0) {
+//        if ((compte - value) >= 0) {
             compte -= value;
 
             System.out.println("Retirada: " + value + "\nSALDO ACTUAL:" + compte);
-        }
+//        }else{
+//            System.err.println("No es pot realitzar la operació: " + "Retirar " + value);
+//        }
 
         contenedorLleno = !contenedorLleno;
         notifyAll();
