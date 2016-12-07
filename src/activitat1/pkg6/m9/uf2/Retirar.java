@@ -16,8 +16,7 @@ public class Retirar implements Runnable {
     /**
      * Constructor de la clase Retirar.
      *
-     * @param contenedor Contenedor común a los consumidores y el productor
-     * @param idconsumidor Identificador del consumidor
+     * @param contenedor Contenedor comú a les retirades i els ingresos
      */
     public Retirar(CompteBancari contenedor, int idconsumidor) {
         this.contenedor = contenedor;

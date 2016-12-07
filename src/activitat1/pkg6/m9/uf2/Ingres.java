@@ -17,8 +17,7 @@ public class Ingres implements Runnable {
     /**
      * Constructor de la clase Ingres.
      *
-     * @param contenedor Contenedor común a los consumidores y el productor
-     * @param idproductor Identificador del productor
+     * @param contenedor Contenedor comú a les retirades i els ingresos
      */
     public Ingres(CompteBancari contenedor, int idproductor) {
         this.contenedor = contenedor;
