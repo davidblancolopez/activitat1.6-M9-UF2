@@ -7,22 +7,23 @@ public class CompteBancari {
 
     public synchronized void retirar(int value) {
 
-        while (!contenedorLleno || ((compte - value) < 0) ) {
+        while (contenedorLleno || ((compte - value) < 0) ) {
             try {
                 wait();
-                //contenedorLleno = !contenedorLleno;
+                if(compte - value < 0){
+                    System.out.println("Intent de retirada: " + value );
+                }            
             } catch (InterruptedException e) {
                 System.err.println("Contenedor: Error en retirar -> " + e.getMessage());
             }
         }
 
-//        if ((compte - value) >= 0) {
+        contenedorLleno = !contenedorLleno;
+        
             compte -= value;
 
             System.out.println("Retirada: " + value + "\nSALDO ACTUAL:" + compte);
-//        }else{
-//            System.err.println("No es pot realitzar la operació: " + "Retirar " + value);
-//        }
+
 
         contenedorLleno = !contenedorLleno;
         notifyAll();
@@ -37,11 +38,14 @@ public class CompteBancari {
                 System.err.println("Contenedor: Error en ingresar -> " + e.getMessage());
             }
         }
+        
+        contenedorLleno = !contenedorLleno;
+        
         compte += value;
+        System.out.println("Ingres: " + value + "\nSALDO ACTUAL:" + compte);
+        
         contenedorLleno = !contenedorLleno;
         notifyAll();
-
-        System.out.println("Ingres: " + value + "\nSALDO ACTUAL:" + compte);
 
     }
 }
